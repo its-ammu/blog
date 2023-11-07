@@ -1,0 +1,11 @@
+baseURL = 'http://example.org/'
+languageCode = 'en-us'
+title = "Varsni's Blog"
+theme = "paper"
+[params]
+   github = "its-ammu"
+
+[[menu.main]]
+  identifier = "about"
+  name = "About"
+  url = "/about/"
