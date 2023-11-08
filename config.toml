@@ -1,9 +1,12 @@
-baseURL = 'http://example.org/'
+baseURL = 'https://blog.varsni.com/'
 languageCode = 'en-us'
 title = "Varsni's Blog"
 theme = "paper"
 [params]
    github = "its-ammu"
+   rss = true
+   math = true  
+   enableEmoji = true      
 
 [[menu.main]]
   identifier = "about"
