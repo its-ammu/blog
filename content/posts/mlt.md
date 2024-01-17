@@ -17,7 +17,9 @@ Multi-tenancy in the cloud is akin to running multiple, separate offices within 
 
 **Database-per-Tenant**: Each tenant has its own dedicated database instance. This approach offers the highest level of data isolation but can be resource-intensive and costly. It's suitable for scenarios where strict data separation is required.
 
+
 ![Schema seperated tenants](/db_MLT.png)
+
 
 **Micro-services with API Gateway**: Tenants are served by separate microservices, each with its own database. An API gateway manages tenant-specific routing and authentication. This approach provides flexibility, scalability, and strong isolation.
 
