@@ -1,7 +1,6 @@
 ---
 title: "Aws Chatbot - Part I - Integrating with MS Teams"
 date: 2024-01-29T21:27:59+05:30
-draft: true
 tags:
     - aws
 ---
