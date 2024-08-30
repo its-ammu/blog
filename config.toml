@@ -3,7 +3,7 @@ languageCode = 'en-us'
 title = "Varsni's Blog"
 theme = "paper"
 [params]
-   color = 'linen'  
+   color = 'white'  
    github = "its-ammu"
    rss = true
    math = true  

@@ -1,5 +1,5 @@
 ---
-title: "Aws Chatbot - Part I - Integrating with MS Teams"
+title: "AWS Chatbot - Integrating with MS Teams"
 date: 2024-01-29T21:27:59+05:30
 tags:
     - aws
@@ -17,8 +17,7 @@ This service is relatively new so there is not quite enough documentation on how
 
 
 - AWS Account with required access
-- Slack / Teams / Chime Account
-- AWS CLI installed and configured
+- Teams Account with required access
 
 
 ## Setting up AWS Chatbot with MS Teams
@@ -26,8 +25,6 @@ This service is relatively new so there is not quite enough documentation on how
 ### Create a Teams Channel
 - Create a new channel in Teams and add the AWS Chatbot app to the channel.
 - Once the app is added, We will have to get the teams channel link. To get the link, click on the three dots next to the channel name and select **Get link to channel**. Copy the link and save it for later use.
-
-![Get link to channel](/get_link_to_channel.png)
 
 ### Creating AWS Chatbot MS Teams configuration
 
@@ -41,14 +38,12 @@ This service is relatively new so there is not quite enough documentation on how
 
 - Now the team configuration is done. We will have to create a channel configuration. In the chatbot configuration screen click on the **Configure New Channel** button.
 
-![Configure New Channel](/configure_new_channel.png)
-
 - Next we will have to specify the channel name and channel URL for the channel that we created. We will also specify the IAM role that will be used by the chatbot. Here we have 2 types of roles `channel level roles` and `user level roles`.
     - Channel level roles will be applied to all users in a channel
     - In User level roles the users will have to choose an IAM role to perform the action.
     - We will be going with channel level roles.
 
-- We can set guardrails to restrict permissions for the chatbot. This adds an an extra layer of deny permissions to the chatbot. We will be skipping this step for now.
+- We can set guardrails to restrict permissions for the chatbot. This adds an an extra layer of deny permissions to the chatbot. Lets give the chatbot permissions to invoke lambda functions and read access.
 
 ![Add Chatbot Config](/add_chatbot_config.png)
 
@@ -60,6 +55,24 @@ This service is relatively new so there is not quite enough documentation on how
 
 
 ## Using AWS Chatbot to send notifications and run commands
+
+### Running Commands
+
+To run cli commands on AWS chatbot you will have to send a message to the channel wih the prefix as `@aws`. Here is the format for the commands.
+
+```bash
+@aws service command --options
+```
+
+For example, Lets run a command now to invoke a lambda function that will upload a file to S3.
+
+```bash
+@aws lambda invoke-function --function-name upload-file --region us-east-1'
+```
+
+Here is an example cloudformation template that creates the S3 bucket and the lambda function that will be used in the above command - [Cloudformation - S3 Upload Lambda]()
+
+However there are some limitations to this. There are a few non supported actions that cant be performed via chatbot. To find more info on this and how the commands can be used, check out the [official documentation](https://docs.aws.amazon.com/chatbot/latest/adminguide/chatbot-cli-commands.html).
 
 ### Sending Notifications
 
@@ -83,118 +96,90 @@ To send notifications we will have to send a message in the following format to 
 
 ```
 
-Typically this can be done in a lambda function that is triggered by an event. For example, we can trigger a lambda function when a new EC2 instance is created and send a notification to the SNS topic. In the variable section we can send the instance id of the newly created instance. This can be used to run commands on the instance via AWS CLI. We will see how to do that in the next section.
+Typically this can be done in a lambda function that is triggered by an event. For example, we can trigger a lambda function is triggered by an S3 upload event. When a file is uploaded to S3, the Lambda function will send a notification to the designated SNS topic, indicating that a new file has been uploaded, including the file’s path. This can be used to run commands / custom actions to invoke a lambda function that can perform any action on the file.
 
 We will be creating a lambda function that will send a notification to the SNS topic that we created. Here is the lambda function that we are going to use.
 
 ```python
-import json
 import boto3
+import os
+import json
+import logging
+
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 def lambda_handler(event, context):
-    print(event)
-    instance_id = event['detail']['instance-id']
-    print(instance_id)
-    sns = boto3.client('sns')
-    response = sns.publish(
-        TopicArn='<topic-arn>',
-        Message=json.dumps({
-            "version": "1.0",
-            "source": "custom",
-            "content": {
-                "title": f"Instance Created - {instance_id}",
-                "description": f"An instance has been created in the account. Here is the full event - {event}"
-            },
-            "metadata": {
-                "additionalContext": {
-                    "instanceID": instance_id
-                }
+    """
+    This lambda function will publish a message to an SNS topic configured for Chatbot on S3 upload.
+    """
+
+    logger.info("This lambda function will publish a message to an SNS topic configured for Chatbot. It will be triggered by a S3 upload.")
+
+    sns_topic_arn = os.environ.get("SNS_TOPIC_ARN")
+    sns = boto3.client("sns")
+
+    file_name = event["Records"][0]["s3"]["object"]["key"]
+    bucket_name = event["Records"][0]["s3"]["bucket"]["name"]
+    title = f"File Uploaded : {file_name}"
+    description = f"The file {file_name} has been uploaded to the S3 bucket. Use the custom action to process the file."
+
+    msg = {
+        "version": "1.0",
+        "source": "custom",
+        "content": {
+            "title": title,
+            "description": description
+        },
+        "metadata": {
+            "additionalContext": {
+                "file_name": file_name,
+                "bucket_name": bucket_name
             }
-        })
-    )
-    print(response)
+        },
+    }
+
+    logger.info(f"Publishing message to SNS: {msg}, Topic: {sns_topic_arn}")
+    sns.publish(TopicArn=sns_topic_arn, Message=json.dumps(msg))
+
     return {
-        'statusCode': 200,
-        'body': json.dumps('Message Published to SNS')
+        "statusCode": 200,
+        "body": "Message published to SNS"
     }
 ```
 
-Here is a event filter that can be used to trigger the lambda function.
+Once the lambda function is created we can test it by uploading a file to the S3 bucket. We will get a notification in the channel.
 
-```json
-{
-  "source": [
-    "aws.ec2"
-  ],
-  "detail-type": [
-    "EC2 Instance State-change Notification"
-  ],
-  "detail": {
-    "state": [
-      "running"
-    ]
-  }
-}
-```
-
-Once the lambda function is created we can test it by creating a new EC2 instance. Once the instance is created we will get a notification in the teams channel.
-
-### Running Commands
-
-To run cli commands on AWS chatbot you will have to send a message to the channel wih the prefix as `@aws`. Here is the format for the commands.
-
-```bash
-@aws service command --options
-```
-
-For example, if you want to get the list of instances in your account you can send the following message to the channel.
-
-```bash
-@aws ec2 describe-instances
-```
-
-However there are some limitations to this. There are a few non supported actions that cant be performed via chatbot. To find more info on this and how the commands can be used, check out the [official documentation](https://docs.aws.amazon.com/chatbot/latest/adminguide/chatbot-cli-commands.html).
-
+Here is the cloudformation template for the above lambda function to send a notification to the SNS topic when a file is uploaded to S3 - [Cloudformation - Chatbot S3 Notification]()
 
 ### Custom actions
 
-In the custom action we are going to call a lambda that will get the tags of the instance and adds that to a DynamoDB resource tracking table. Here is the lambda function that we are going to use.
+Using the custom action we are going to call a lambda that will process the file that was uploaded to S3. Here is the lambda function that we are going to use which will download the file from S3 and return the contents.
 
 ```python
 import json
 import boto3
+import logging
+
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 def lambda_handler(event, context):
-    print(event)
-    instance_id = event['instanceID']
-    print(instance_id)
-    ec2 = boto3.client('ec2')
-    response = ec2.describe_tags(
-        Filters=[
-            {
-                'Name': 'resource-id',
-                'Values': [
-                    instance_id,
-                ]
-            },
-        ]
-    )
-    print(response)
-    tags = response['Tags']
-    print(tags)
-    dynamodb = boto3.resource('dynamodb')
-    table = dynamodb.Table('resource_tracking')
-    table.put_item(
-        Item={
-            'resource_id': instance_id,
-            'tags': tags
-        }
-    )
+    bucket_name = event['bucket_name']
+    file_name = event['file_name']
+    logger.info(f"Processing file: {file_name} in bucket: {bucket_name}")
+    s3 = boto3.client('s3')
+    s3.download_file(bucket_name, file_name, '/tmp/file.json')
+    with open('/tmp/file.json', 'r') as f:
+        data = json.load(f)
+    logger.info(f"File data: {data}")
     return {
-        'statusCode': 200,
-        'body': json.dumps('Hello from Lambda!')
+        "statusCode": 200,
+        "body": "File processed",
+        "data": data
     }
 ```
+Here is the cloudformation template for the above lambda function to process the file that was uploaded to S3 - [Cloudformation - Chatbot S3 File Processing]()
 
 Lets send a test message from the lambda to create a custom action now. Once the message is recieved in the channel. Click on the **Create custom action** button.
 
@@ -204,20 +189,18 @@ In the next screen we will have to specify a `Name` for the action, `Display tex
 
 ![Add Custom Action](/add_custom_action.png)
 
-In the next steps we will also have to specify the AWS account id and the region where the lambda function is present. We will also have to specify the lambda function name and the input that we are going to send to the lambda function. In this case we are going to send the instance id as the input. This will be available as a parameter in the post that we sent.
+In the next steps we will also have to specify the AWS account id and the region where the lambda function is present. We will also have to specify the lambda function name and the input that we are going to send to the lambda function. In this case we are going to send the bucket name and the file name as the input. This will be available as a parameter in the post that we sent.
 
 ![Add Custom Action](/add_custom_action_2.png)
 
 Once the custom action is created we will get a confirmation message in the channel.
 
-Lets create an instance and test now. Once the instance is created we will get a notification in the channel. We will also get the custom action button.
-On clicking the button we will get a prompt to run the lambda. If we proceed with the run, the lambda will be triggered and the tags will be added to the DynamoDB table. Also the lambda output will be posted in the channel as a reply in the thread.
+Lets run a command to upload a file to S3 and test. Once the file is uploaded we will get a notification in the channel. Click on the **View details** button to see the lambda output with the file data.
 
 
 ## Cloudformation Support
 
-AWS Chatbot can be configured using cloudformation. Here is a sample cloudformation template that can be used to create a chatbot configuration is given in the following github repo.
-
+AWS Chatbot can be configured using cloudformation. A sample cloudformation template that can be used to create a chatbot configuration is given in the following github repo with all the usecases explored.
 
 [Cloudformation - AWS Chatbot integration with MS Teams]()
 
