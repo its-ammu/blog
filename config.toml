@@ -13,3 +13,7 @@ theme = "paper"
   identifier = "about"
   name = "About"
   url = "/about/"
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
