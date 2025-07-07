@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tags on Varsni&#39;s Blog</title>
+    <link>http://localhost:1313/tags/</link>
+    <description>Recent content in Tags on Varsni&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 02 Jul 2025 16:36:17 +0530</lastBuildDate><atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Agents</title>
+      <link>http://localhost:1313/tags/agents/</link>
+      <pubDate>Wed, 02 Jul 2025 16:36:17 +0530</pubDate>
+      
+      <guid>http://localhost:1313/tags/agents/</guid>
+      <description></description>
+      <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Ai</title>
+      <link>http://localhost:1313/tags/ai/</link>
+      <pubDate>Wed, 02 Jul 2025 16:36:17 +0530</pubDate>
+      
+      <guid>http://localhost:1313/tags/ai/</guid>
+      <description></description>
+      <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Mcp</title>
+      <link>http://localhost:1313/tags/mcp/</link>
+      <pubDate>Wed, 02 Jul 2025 16:36:17 +0530</pubDate>
+      
+      <guid>http://localhost:1313/tags/mcp/</guid>
+      <description></description>
+      <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Aws</title>
+      <link>http://localhost:1313/tags/aws/</link>
+      <pubDate>Wed, 08 Nov 2023 11:51:01 +0530</pubDate>
+      
+      <guid>http://localhost:1313/tags/aws/</guid>
+      <description></description>
+      <content:encoded><![CDATA[]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>

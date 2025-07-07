@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Aws on Varsni&#39;s Blog</title>
+    <link>http://localhost:1313/tags/aws/</link>
+    <description>Recent content in Aws on Varsni&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 08 Nov 2023 11:51:01 +0530</lastBuildDate><atom:link href="http://localhost:1313/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Multitenancy in AWS with account per tenant model</title>
+      <link>http://localhost:1313/posts/mlt/</link>
+      <pubDate>Wed, 08 Nov 2023 11:51:01 +0530</pubDate>
+      
+      <guid>http://localhost:1313/posts/mlt/</guid>
+      <description>&lt;p&gt;Multi-tenancy in the cloud is akin to running multiple, separate offices within a shared workspace. In technical terms, it means deploying a single software application or service that serves numerous users or clients, all isolated from one another. This approach maximises resource utilisation and cost-efficiency by sharing infrastructure and codebase.&lt;/p&gt;
+&lt;h2 id=&#34;mlt-architectures&#34;&gt;MLT Architectures&lt;/h2&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Single Database, Separate Schemas&lt;/strong&gt;: In this approach, a single database is used to store data for all tenants, but each tenant has its own schema within the database. This architecture provides strong isolation between tenants while allowing efficient data management. It&amp;rsquo;s suitable for scenarios where tenants have similar data structures but need data separation.&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>Multi-tenancy in the cloud is akin to running multiple, separate offices within a shared workspace. In technical terms, it means deploying a single software application or service that serves numerous users or clients, all isolated from one another. This approach maximises resource utilisation and cost-efficiency by sharing infrastructure and codebase.</p>
+<h2 id="mlt-architectures">MLT Architectures</h2>
+<hr>
+<p><strong>Single Database, Separate Schemas</strong>: In this approach, a single database is used to store data for all tenants, but each tenant has its own schema within the database. This architecture provides strong isolation between tenants while allowing efficient data management. It&rsquo;s suitable for scenarios where tenants have similar data structures but need data separation.</p>
+<p><img loading="lazy" src="/posts/mlt/assets/schema_MLT.png" type="" alt="Schema seperated tenants"  /></p>
+<p><strong>Database-per-Tenant</strong>: Each tenant has its own dedicated database instance. This approach offers the highest level of data isolation but can be resource-intensive and costly. It&rsquo;s suitable for scenarios where strict data separation is required.</p>
+<p><img loading="lazy" src="/posts/mlt/assets/db_MLT.png" type="" alt="Schema seperated tenants"  /></p>
+<p><strong>Micro-services with API Gateway</strong>: Tenants are served by separate microservices, each with its own database. An API gateway manages tenant-specific routing and authentication. This approach provides flexibility, scalability, and strong isolation.</p>
+<p><img loading="lazy" src="/posts/mlt/assets/routing_MLT.png" type="" alt="Schema seperated tenants"  /></p>
+<p><strong>Account level isolation</strong>: A multi-tenancy architecture with separate AWS accounts involves assigning each tenant or customer their own dedicated AWS account. This architecture ensures robust isolation, security, and scalability between tenants. Each tenant manages their AWS resources independently, with IAM policies enforcing access control. Network isolation is achieved using separate VPCs. Monitoring, billing, and disaster recovery are handled individually for each tenant, allowing for customised solutions. This approach is ideal for scenarios where data separation and security are paramount, such as SaaS applications or managed service providers.</p>
+<p>The Approach we will be looking today is <strong>Account Level Isolation.</strong></p>
+]]></content:encoded>
+    </item>
+    
+    <item>
+      <title>Guide to AWS Certified SysOps Administrator – Associate</title>
+      <link>http://localhost:1313/posts/aws_sysops/</link>
+      <pubDate>Tue, 07 Nov 2023 14:34:41 +0530</pubDate>
+      
+      <guid>http://localhost:1313/posts/aws_sysops/</guid>
+      <description>&lt;p&gt;Becoming an AWS Certified SysOps Administrator – Associate is a significant step in showcasing your expertise in managing and operating systems on the AWS platform. This guide will provide you with a roadmap to navigate through the preparation process successfully.&lt;/p&gt;
+&lt;p&gt;First of all you will need about 6 months hands-on experience in AWS to get an idea on its services. Next take a look at the AWS whitepapers to see what is covered in the exams. To start with your learning you have lots of courses available in udemy. The course that I found helpful was the one from Stephane Maarek. Here are the links to the resources that I used :&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<p>Becoming an AWS Certified SysOps Administrator – Associate is a significant step in showcasing your expertise in managing and operating systems on the AWS platform. This guide will provide you with a roadmap to navigate through the preparation process successfully.</p>
+<p>First of all you will need about 6 months hands-on experience in AWS to get an idea on its services. Next take a look at the AWS whitepapers to see what is covered in the exams. To start with your learning you have lots of courses available in udemy. The course that I found helpful was the one from Stephane Maarek. Here are the links to the resources that I used :</p>
+<h3 id="course-and-practice-tests">Course and Practice Tests</h3>
+<ul>
+<li>
+<p><a href="https://www.udemy.com/course/ultimate-aws-certified-sysops-administrator-associate/">Course: Ultimate AWS Certified SysOps Administrator Associate</a></p>
+</li>
+<li>
+<p><a href="https://www.udemy.com/course/practice-exams-aws-certified-sysops-administrator-associate/">Practice Exams: AWS Certified SysOps Administrator Associate</a></p>
+</li>
+<li>
+<p><a href="https://www.examtopics.com">Question Dumps: ExamTopics</a></p>
+</li>
+</ul>
+<p>Embarking on the journey to become an AWS Certified SysOps Administrator – Associate requires a combination of hands-on experience, learning, and practice tests. The resources mentioned in this guide are meant to guide you through this process efficiently.</p>
+<p>Best of luck on your certification journey!! 🤞</p>
+]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>

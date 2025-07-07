@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tools on Varsni&#39;s Blog</title>
+    <link>http://localhost:1313/tags/tools/</link>
+    <description>Recent content in Tools on Varsni&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 02 Jul 2025 16:36:17 +0530</lastBuildDate><atom:link href="http://localhost:1313/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MCP Explained: How AI Tools and Agents Work Together</title>
+      <link>http://localhost:1313/posts/what-is-mcp/</link>
+      <pubDate>Wed, 02 Jul 2025 16:36:17 +0530</pubDate>
+      
+      <guid>http://localhost:1313/posts/what-is-mcp/</guid>
+      <description>&lt;h2 id=&#34;what-is-mcp&#34;&gt;What is MCP?&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;MCP stands for Model Context Protocol.&lt;/strong&gt;&lt;br&gt;
+It&amp;rsquo;s a new open standard that enables AI agents to talk to tools and APIs and share information securely, in real time.&lt;/p&gt;
+&lt;p&gt;Think of it like this:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;LLM + Tools = Agent.&lt;/strong&gt;&lt;br&gt;
+MCP is what makes that “+ Tools” part easier, flexible, and secure.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;think-of-mcp-like-a-usb-c-cable&#34;&gt;Think of MCP Like a USB-C Cable&lt;/h3&gt;
+&lt;p&gt;Let’s break it down with a simple analogy:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;You have a &lt;strong&gt;laptop (Agent)&lt;/strong&gt; and a &lt;strong&gt;smartphone (Data Source)&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;You want to transfer photos from your phone to your laptop.&lt;/li&gt;
+&lt;li&gt;So, you use a &lt;strong&gt;USB-C cable (MCP)&lt;/strong&gt; to connect them.&lt;/li&gt;
+&lt;li&gt;The cable doesn’t care what brand your devices are as long as they speak the same protocol, they can share data seamlessly.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Now imagine the same idea, but with AI tools:&lt;/p&gt;</description>
+      <content:encoded><![CDATA[<h2 id="what-is-mcp">What is MCP?</h2>
+<p><strong>MCP stands for Model Context Protocol.</strong><br>
+It&rsquo;s a new open standard that enables AI agents to talk to tools and APIs and share information securely, in real time.</p>
+<p>Think of it like this:</p>
+<p><strong>LLM + Tools = Agent.</strong><br>
+MCP is what makes that “+ Tools” part easier, flexible, and secure.</p>
+<hr>
+<h3 id="think-of-mcp-like-a-usb-c-cable">Think of MCP Like a USB-C Cable</h3>
+<p>Let’s break it down with a simple analogy:</p>
+<ul>
+<li>You have a <strong>laptop (Agent)</strong> and a <strong>smartphone (Data Source)</strong>.</li>
+<li>You want to transfer photos from your phone to your laptop.</li>
+<li>So, you use a <strong>USB-C cable (MCP)</strong> to connect them.</li>
+<li>The cable doesn’t care what brand your devices are as long as they speak the same protocol, they can share data seamlessly.</li>
+</ul>
+<p>Now imagine the same idea, but with AI tools:</p>
+<ul>
+<li>The <strong>laptop is an AI agent</strong> like Amazon Q or Claude.</li>
+<li>The <strong>phone is a data source</strong> like a database, API, or local file.</li>
+<li>The <strong>USB-C cable is MCP</strong> the protocol that lets these tools talk to each other and get things done.</li>
+</ul>
+<p>MCP acts like the connector between agents and the tools they need to be useful in real-world workflows.</p>
+<p><img loading="lazy" src="/posts/what-is-mcp/assets/mcp-usb.png" type="" alt="MCP USB"  /></p>
+<hr>
+<h3 id="a-real-world-use-case">A Real-World Use Case</h3>
+<p>Let’s say your company has important business data in a <strong>PostgreSQL database</strong>. You’d like a GenAI assistant to read from that data and generate reports or automate tasks.</p>
+<p>With MCP, this becomes very doable:</p>
+<ul>
+<li>Set up a <strong>PostgreSQL MCP server</strong> to expose that data.</li>
+<li>Connect an <strong>agent (like Amazon Q)</strong> to it using MCP.</li>
+<li>The agent can now securely query the database, generate insights, or automate reporting all while respecting any permissions you configure on the MCP server.</li>
+</ul>
+<p>Basically, <strong>MCP works like an API layer between your tools and the agent</strong>, but with more flexibility and control.</p>
+<hr>
+<h3 id="components-of-mcp">Components of MCP</h3>
+<p><img loading="lazy" src="/posts/what-is-mcp/assets/mcp-components.png" type="" alt="MCP Components"  /></p>
+<p>Let’s look at the core pieces that make MCP work:</p>
+<h4 id="mcp-server">MCP Server:</h4>
+<p>A service that exposes a data source or tool like a database, CLI, or document for an agent to use.</p>
+<h4 id="mcp-client">MCP Client:</h4>
+<p>Usually the AI agent or model (like Claude or Amazon Q) that initiates the interaction by sending requests.</p>
+<h4 id="mcp-protocol">MCP Protocol:</h4>
+<p>The communication standard that defines how the client and server talk. Think of it like the “language” they both understand.</p>
+<h4 id="mcp-host">MCP Host:</h4>
+<p>Where the MCP client or server runs. This might be:</p>
+<ul>
+<li>Your <strong>local machine</strong> (e.g., Claude Desktop, Cursor IDE)</li>
+<li>An <strong>app or agent</strong> hosted in the cloud using frameworks like LangChain or Strands</li>
+</ul>
+<hr>
+<h3 id="wrapping-it-all-up">Wrapping It All Up</h3>
+<p>As you can see, <strong>MCP acts like the API/backend for agents</strong>, making them capable of interacting with the real world. Plugging in or removing tools could become as easy as installing a plugin or extension (like in Cursor IDE).</p>
+<p>It’s early days, but the potential is huge and growing fast.</p>
+<hr>
+<h3 id="-want-to-try-it-yourself">🚀 Want to Try It Yourself?</h3>
+<p>If you’re curious to explore MCP, here are some next steps you can try out:</p>
+<ul>
+<li>Set up your own MCP server using the open-source <code>fastmcp</code> template: <a href="https://pypi.org/project/fastmcp/1.0/">fastmcp on PyPI</a></li>
+<li>Connect it to a database, folder, or API</li>
+<li>Then test how an agent like Claude Desktop or Amazon Q can interact with it</li>
+</ul>
+<hr>
+<p>Thanks for reading! 🎉</p>
+<p>If this post helped clarify what MCP is all about, feel free to share it, or let me know what you’re building with it. Excited to see where this goes!</p>
+]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>
