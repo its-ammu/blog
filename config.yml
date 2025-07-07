@@ -18,18 +18,19 @@ params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
     title: VarsniBlog
     description: "Varsni's Blog"
+    favicon: favicon.ico
     keywords: [Blog, Portfolio, PaperModX]
     author: Varsni
-    images: ["<link or path of image for opengraph, twitter-cards>"]
+    images: ["/favicon.png"]
     DateFormat: "January 2, 2006"
-    defaultTheme: auto # dark, light
+    defaultTheme: light # dark, light
     disableThemeToggle: false
 
     ShowReadingTime: true
     ShowShareButtons: true
     ShowPostNavLinks: true
     ShowBreadCrumbs: true
-    ShowCodeCopyButtons: false
+    ShowCodeCopyButtons: true
     disableSpecial1stPost: false
     disableScrollToTop: false
     comments: false
@@ -38,17 +39,9 @@ params:
     showtoc: false
     tocopen: false
 
-    assets:
-        # disableFingerprinting: true
-        favicon: "<link / abs url>"
-        favicon16x16: "<link / abs url>"
-        favicon32x32: "<link / abs url>"
-        apple_touch_icon: "<link / abs url>"
-        safari_pinned_tab: "<link / abs url>"
-
     label:
         text: "Home"
-        icon: /apple-touch-icon.png
+        icon: /static/favicon.png
         iconHeight: 35
 
     # profile-mode
@@ -85,7 +78,7 @@ params:
         hiddenInSingle: true # hide on single page
 
     editPost:
-        URL: "https://github.com/varsni/blog/content"
+        URL: "https://github.com/ts-ammu/blog/content"
         Text: "Suggest Changes" # edit text
         appendFilePath: true # to append file path to Edit link
 

@@ -97,29 +97,6 @@ MCP is what makes that “+ Tools” part easier, flexible, and secure.</p>
     </item>
     
     <item>
-      <title>Build Lightweight MCP Servers Easily with FastMCP</title>
-      <link>http://localhost:1313/posts/create_mcp_servers/</link>
-      <pubDate>Wed, 02 Jul 2025 16:33:12 +0530</pubDate>
-      
-      <guid>http://localhost:1313/posts/create_mcp_servers/</guid>
-      <description>&lt;p&gt;Hi there!&lt;/p&gt;
-&lt;p&gt;In this post, I&amp;rsquo;ll show you how to create MCP servers easily with FastMCP. To know the basics of MCP, you can read my previous post &lt;a href=&#34;http://localhost:1313/posts/what_is_mcp&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;what-is-fastmcp&#34;&gt;What is FastMCP?&lt;/h2&gt;
-&lt;p&gt;FastMCP is a new open-source library that makes it easy to create MCP servers. It&amp;rsquo;s built on top of the FastAPI framework and uses the latest version of the MCP protocol.&lt;/p&gt;
-&lt;h2 id=&#34;how-to-install-fastmcp&#34;&gt;How to install FastMCP?&lt;/h2&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pip install fastmcp
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;how-to-create-an-mcp-server-with-fastmcp&#34;&gt;How to create an MCP server with FastMCP?&lt;/h2&gt;</description>
-      <content:encoded><![CDATA[<p>Hi there!</p>
-<p>In this post, I&rsquo;ll show you how to create MCP servers easily with FastMCP. To know the basics of MCP, you can read my previous post <a href="/posts/what_is_mcp">here</a>.</p>
-<h2 id="what-is-fastmcp">What is FastMCP?</h2>
-<p>FastMCP is a new open-source library that makes it easy to create MCP servers. It&rsquo;s built on top of the FastAPI framework and uses the latest version of the MCP protocol.</p>
-<h2 id="how-to-install-fastmcp">How to install FastMCP?</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip install fastmcp
-</span></span></code></pre></div><h2 id="how-to-create-an-mcp-server-with-fastmcp">How to create an MCP server with FastMCP?</h2>
-]]></content:encoded>
-    </item>
-    
-    <item>
       <title>Multitenancy in AWS with account per tenant model</title>
       <link>http://localhost:1313/posts/mlt/</link>
       <pubDate>Wed, 08 Nov 2023 11:51:01 +0530</pubDate>
