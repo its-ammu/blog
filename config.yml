@@ -16,8 +16,8 @@ minify:
 
 params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
-    title: VarsniBlog
-    description: "Varsni's Blog"
+    title: Varsni's Blog
+    description: "Here is Varsni sharing smart takes on cloud, DevOps, AI and etc..."
     favicon: favicon.ico
     keywords: [Blog, Portfolio, PaperModX]
     author: Varsni
@@ -41,7 +41,7 @@ params:
 
     label:
         text: "Home"
-        icon: /static/favicon.png
+        icon: /favicon.ico
         iconHeight: 35
 
     # profile-mode
