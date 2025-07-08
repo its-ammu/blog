@@ -8,7 +8,7 @@ buildFuture: false
 buildExpired: false
 pygmentsUseClasses: true
 
-googleAnalytics: UA-123-45
+googleAnalytics: G-C3T09C8TP0
 
 minify:
     disableXML: true
@@ -19,7 +19,7 @@ params:
     title: Varsni's Blog
     description: "Here is Varsni sharing smart takes on cloud, DevOps, AI and etc..."
     favicon: favicon.ico
-    keywords: [Blog, Portfolio, PaperModX]
+    keywords: [Blog, Portfolio, PaperModX, Amuthavarsni, Varsni's Blog, Amuthavarsni's Blog, Varsni's Portfolio, Amuthavarsni's Portfolio]
     author: Varsni
     images: ["/favicon.png"]
     DateFormat: "January 2, 2006"
@@ -33,7 +33,7 @@ params:
     ShowCodeCopyButtons: true
     disableSpecial1stPost: false
     disableScrollToTop: false
-    comments: false
+    comments: true
     hidemeta: false
     hideSummary: false
     showtoc: false
@@ -71,10 +71,6 @@ params:
           url: "https://github.com/varsni"
         - name: linkedin
           url: "https://www.linkedin.com/in/amuthavarsni/"
-
-    analytics:
-        google:
-            SiteVerificationTag: "XYZabc"
 
     cover:
         hidden: true # hide everywhere but not in structured data
