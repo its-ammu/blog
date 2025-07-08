@@ -39,6 +39,10 @@ params:
     showtoc: false
     tocopen: false
 
+    analytics:
+      google:
+        SiteVerificationTag: "ohIOYN6wy5yBGb3jTVPZcmM3xOr6T8UMz9cjH095ki8"
+
     label:
         text: "Home"
         icon: /favicon.ico
