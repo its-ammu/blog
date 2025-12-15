@@ -21,7 +21,7 @@ params:
     favicon: favicon.ico
     keywords: [Blog, Portfolio, PaperModX, Amuthavarsni, Varsni's Blog, Amuthavarsni's Blog, Varsni's Portfolio, Amuthavarsni's Portfolio]
     author: Varsni
-    images: ["/favicon.png"]
+    images: ["/favicon.svg"]
     DateFormat: "January 2, 2006"
     defaultTheme: light # dark, light
     disableThemeToggle: false
