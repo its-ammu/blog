@@ -78,7 +78,7 @@ params:
         hiddenInSingle: true # hide on single page
 
     editPost:
-        URL: "https://github.com/ts-ammu/blog/content"
+        URL: "https://github.com/its-ammu/blog/content"
         Text: "Suggest Changes" # edit text
         appendFilePath: true # to append file path to Edit link
 
@@ -99,7 +99,7 @@ menu:
           url: /tags/
           weight: 20
         - name: "@varsni"
-          url: "https://portfolio.varsni.com"
+          url: "https://www.varsni.com"
           params:
             external: true
 
