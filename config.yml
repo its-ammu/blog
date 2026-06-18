@@ -1,6 +1,6 @@
 baseURL: "https://blog.varsni.com/"
 title: Varsni's Blog
-theme: PaperModX
+theme: notebook
 
 enableRobotsTXT: true
 buildDrafts: false
@@ -17,10 +17,10 @@ minify:
 params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
     title: Varsni's Blog
-    description: "Here is Varsni sharing smart takes on cloud, DevOps, AI and etc..."
+    description: "By day, I'm a DevOps engineer who streamlines tech processes. By night, I craft automation spells and share insights to make your tech journey exciting and accessible"
     favicon: favicon.ico
-    keywords: [Blog, Portfolio, PaperModX, Amuthavarsni, Varsni's Blog, Amuthavarsni's Blog, Varsni's Portfolio, Amuthavarsni's Portfolio]
-    author: Varsni
+    keywords: [Blog, Portfolio, Amuthavarsni, Varsni's Blog, Amuthavarsni's Blog, Varsni's Portfolio, Amuthavarsni's Portfolio]
+    author: Amuthavarsni
     images: ["/favicon.svg"]
     DateFormat: "January 2, 2006"
     defaultTheme: light # dark, light
@@ -52,7 +52,7 @@ params:
     profileMode:
         enabled: false # needs to be explicitly set
         title: Varsni
-        subtitle: "Senior Engineer | Presidio"
+        subtitle: "Senior Engineer @ Presidio"
         imageUrl: ""
         imageWidth: 120
         imageHeight: 120
@@ -94,12 +94,18 @@ params:
         keys: ["title", "permalink", "summary", "content"]
 menu:
     main:
+        - identifier: posts
+          name: Posts
+          url: /posts/
+          weight: 15
         - identifier: tags
-          name: tags
+          name: Tags
           url: /tags/
           weight: 20
-        - name: "@varsni"
+        - identifier: varsni
+          name: "@varsni"
           url: "https://www.varsni.com"
+          weight: 30
           params:
             external: true
 

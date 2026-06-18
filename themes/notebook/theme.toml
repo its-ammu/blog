@@ -1,0 +1,7 @@
+name = "Notebook"
+license = "MIT"
+description = "A ruled-paper, handwritten-feel theme built from scratch."
+min_version = "0.146.0"
+
+[author]
+  name = "Varsni"
